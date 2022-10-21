@@ -27,6 +27,10 @@ public class PlayerMove : MonoBehaviour
         //if(GroundChek.isGrounded){}
     }
 
+    void FixedUpdate()
+    {
+        rigided.velocity = new Vector2(horizontal * speed, rigided.velocity.y);
+    }
 
     void Update()
     {
@@ -53,15 +57,16 @@ public class PlayerMove : MonoBehaviour
             rigided.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             anim.SetBool("Salto", true);
         }
+
+        //GameManager.Instance.Restavidas();
+        //GameManager.Instance.vidas;
         //playertrasnform.position += new Vector3 (horizontal * speed * Time.deltaTime, 0, 0);
         //playertrasnform.position += new Vector3 (1, 0, 0) * horizontal * speed * Time.deltaTime;
         //playertrasnform.Translate(Vector3.right * horizontal * speed * Time.deltaTime, Space.World);
+
+        //Global.nivel = 1;
     }
 
-    void FixedUpdate()
-    {
-        rigided.velocity = new Vector2(horizontal * speed, rigided.velocity.y);
-    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
