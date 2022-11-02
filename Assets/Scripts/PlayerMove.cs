@@ -11,10 +11,12 @@ public class PlayerMove : MonoBehaviour
 
     private Rigidbody2D rigided;
     public Animator anim;
+    private Bombas bombaScript;
     
     private float horizontal;
 
     public PlayableDirector director;
+
     //private Transform playertrasnform;
     
 
@@ -79,7 +81,11 @@ public class PlayerMove : MonoBehaviour
         {
             Debug.Log("Saltapls");
             GameManager.Instance.Golpe();
-            Destroy(other.gameObject, 5f);
+            
+            
+            bombaScript = other.gameObject.GetComponent<Bombas>();
+            
+            bombaScript.DeathBoom();
             //anim.SetBool("Explosion", true);
         }
 

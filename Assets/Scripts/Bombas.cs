@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class Bombas : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    Animator bombaAnimator;
+
+    BoxCollider2D bombaCollider;
+
+    private void Awake()
     {
-        
+        bombaAnimator = GetComponent<Animator>();
+        bombaCollider = GetComponent<BoxCollider2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DeathBoom()
     {
-        
+
+
+        bombaCollider.enabled = false;
+        bombaAnimator.SetBool("Explosion", true);
+        Destroy(this.gameObject, 0.8f);
+
     }
+
 }

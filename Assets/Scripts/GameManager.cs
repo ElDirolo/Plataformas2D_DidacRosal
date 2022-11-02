@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public GameObject[] hearts;
     
+    
 
     // Si ya hay una instancia que no soy yo me destruyo si hay mas de un game manager uno de ellos se mata
     void Awake()
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
     {
         Global.vidas--;
         AudioManager.Instance.GolpeSound();
+        
 
 
         
