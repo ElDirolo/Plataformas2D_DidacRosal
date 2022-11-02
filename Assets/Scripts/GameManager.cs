@@ -40,17 +40,17 @@ public class GameManager : MonoBehaviour
         if(Global.vidas == 0)
         {
             Debug.Log("Dead");
-            Destroy(hearts[0].gameObject);
+            hearts[0].SetActive(false);
 
         }
         if(Global.vidas == 1)
         {
-            Destroy(hearts[1].gameObject);
+            hearts[1].SetActive(false);
 
         }
         if(Global.vidas == 2)
         {
-            Destroy(hearts[2].gameObject);
+            hearts[2].SetActive(false);
 
         }        
     }
@@ -71,6 +71,19 @@ public class GameManager : MonoBehaviour
 
     public void CorazonRecogido()
     {
+        Global.vidas++;
+        AudioManager.Instance.GolpeSound();
         
+
+        if(Global.vidas > 1)
+        {
+            hearts[1].SetActive(true);
+
+        }
+        if(Global.vidas > 2)
+        {
+            hearts[2].SetActive(true);
+
+        }
     }
 }

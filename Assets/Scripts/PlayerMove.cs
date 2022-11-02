@@ -86,7 +86,15 @@ public class PlayerMove : MonoBehaviour
         if(other.gameObject.layer == 7)
         {
             Debug.Log("Papi");
+            Destroy(other.gameObject);
             GameManager.Instance.EstellaRecogida();
+        }
+
+        if(other.gameObject.layer ==3)
+        {
+            Debug.Log("OLEEEE");
+            Destroy(other.gameObject);
+            GameManager.Instance.CorazonRecogido();
         }
         
     }
