@@ -11,6 +11,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip Impacto;
 
     public AudioClip Recolectado;
+
+    public AudioClip VidaExtra;
     
     
     void Awake()
@@ -38,5 +40,10 @@ public class AudioManager : MonoBehaviour
     public void EstellaSound()
     {
         _audioSource.PlayOneShot(Recolectado);
+    }
+
+    public void VidaSound()
+    {
+        _audioSource.PlayOneShot(VidaExtra);
     }
 }

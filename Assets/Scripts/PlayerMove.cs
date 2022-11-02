@@ -16,6 +16,7 @@ public class PlayerMove : MonoBehaviour
     private float horizontal;
 
     public PlayableDirector director;
+    
 
     //private Transform playertrasnform;
     
@@ -79,7 +80,7 @@ public class PlayerMove : MonoBehaviour
         
         if(other.gameObject.layer == 6)
         {
-            Debug.Log("Saltapls");
+            Debug.Log("BUMMM");
             GameManager.Instance.Golpe();
             
             
@@ -91,9 +92,10 @@ public class PlayerMove : MonoBehaviour
 
         if(other.gameObject.layer == 7)
         {
-            Debug.Log("Papi");
+            Debug.Log("STARRR");
             Destroy(other.gameObject);
             GameManager.Instance.EstellaRecogida();
+
         }
 
         if(other.gameObject.layer ==3)
