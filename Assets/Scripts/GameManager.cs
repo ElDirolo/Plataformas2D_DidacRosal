@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public GameObject[] hearts;
     
 
     // Si ya hay una instancia que no soy yo me destruyo si hay mas de un game manager uno de ellos se mata
@@ -26,18 +27,32 @@ public class GameManager : MonoBehaviour
     }
 
 
+
+
+
     public void Golpe()
     {
         Global.vidas--;
         AudioManager.Instance.GolpeSound();
 
-            
+
+        
         if(Global.vidas == 0)
         {
             Debug.Log("Dead");
+            Destroy(hearts[0].gameObject);
 
         }
-        
+        if(Global.vidas == 1)
+        {
+            Destroy(hearts[1].gameObject);
+
+        }
+        if(Global.vidas == 2)
+        {
+            Destroy(hearts[2].gameObject);
+
+        }        
     }
 
     public void EstellaRecogida()
@@ -54,4 +69,8 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void CorazonRecogido()
+    {
+        
+    }
 }

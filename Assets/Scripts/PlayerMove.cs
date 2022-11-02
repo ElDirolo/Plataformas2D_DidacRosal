@@ -79,6 +79,8 @@ public class PlayerMove : MonoBehaviour
         {
             Debug.Log("Saltapls");
             GameManager.Instance.Golpe();
+            Destroy(other.gameObject, 5f);
+            //anim.SetBool("Explosion", true);
         }
 
         if(other.gameObject.layer == 7)
