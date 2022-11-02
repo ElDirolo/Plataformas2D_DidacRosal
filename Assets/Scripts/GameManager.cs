@@ -8,6 +8,11 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public GameObject[] hearts;
     public Text estrellaText;
+
+    public GameObject HUD;
+    public GameObject pantallaVictoria;
+    public GameObject pantallaDerrota;
+    public GameObject Jugador;
     
 
     // Si ya hay una instancia que no soy yo me destruyo si hay mas de un game manager uno de ellos se mata
@@ -44,6 +49,9 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Dead");
             hearts[0].SetActive(false);
+            HUD.SetActive(false);
+            pantallaDerrota.SetActive(true);
+            Jugador.SetActive(false);
 
         }
         if(Global.vidas == 1)
@@ -68,6 +76,9 @@ public class GameManager : MonoBehaviour
         if(Global.puntos == 13)
         {
             Debug.Log("vamos");
+            HUD.SetActive(false);
+            pantallaVictoria.SetActive(true);
+            Jugador.SetActive(false);
 
         }
         
@@ -90,4 +101,8 @@ public class GameManager : MonoBehaviour
 
         }
     }
+
+
+
+
 }
