@@ -75,5 +75,19 @@ public class PlayerMove : MonoBehaviour
             director.Play();
         }
         
+        if(other.gameObject.layer == 6)
+        {
+            Debug.Log("Saltapls");
+            GameManager.Instance.Golpe();
+        }
+
+        if(other.gameObject.layer == 7)
+        {
+            Debug.Log("Papi");
+            GameManager.Instance.EstellaRecogida();
+        }
+        
     }
+
+
 }

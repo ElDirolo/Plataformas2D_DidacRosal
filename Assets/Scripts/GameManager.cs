@@ -6,9 +6,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     
-    public int vidas = 3;
-
-    public int puntos = 0;
 
     // Si ya hay una instancia que no soy yo me destruyo si hay mas de un game manager uno de ellos se mata
     void Awake()
@@ -28,9 +25,33 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    // Update is called once per frame
-    public void Restavidas()
+
+    public void Golpe()
     {
-        vidas--;
+        Global.vidas--;
+        AudioManager.Instance.GolpeSound();
+
+            
+        if(Global.vidas == 0)
+        {
+            Debug.Log("Dead");
+
+        }
+        
     }
+
+    public void EstellaRecogida()
+    {
+    
+        AudioManager.Instance.EstellaSound();
+        Global.puntos++;
+            
+        if(Global.puntos == 13)
+        {
+            Debug.Log("vamos");
+
+        }
+        
+    }
+
 }
