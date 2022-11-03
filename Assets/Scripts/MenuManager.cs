@@ -17,8 +17,13 @@ public class MenuManager : MonoBehaviour
         optionsMenu.SetActive(true);
     }
 
-    public void LoadScene()
+    public void Scene()
     {
         SceneManager.LoadScene("Platforms");
+    }
+
+    public void LoadNivel()
+    {
+        Invoke("Scene", 1f);
     }
 }
