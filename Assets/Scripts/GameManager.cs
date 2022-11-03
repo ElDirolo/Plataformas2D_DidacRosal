@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,10 +11,12 @@ public class GameManager : MonoBehaviour
     public Text estrellaText;
 
     public GameObject HUD;
-    public GameObject pantallaVictoria;
-    public GameObject pantallaDerrota;
+    public GameObject pantallaFinal;
+    public GameObject personajeDerrota;
+    public GameObject personajeVictoria;
     public GameObject Jugador;
-    
+
+
 
     // Si ya hay una instancia que no soy yo me destruyo si hay mas de un game manager uno de ellos se mata
     void Awake()
@@ -48,10 +51,7 @@ public class GameManager : MonoBehaviour
         if(Global.vidas == 0)
         {
             Debug.Log("Dead");
-            hearts[0].SetActive(false);
-            HUD.SetActive(false);
-            pantallaDerrota.SetActive(true);
-            Jugador.SetActive(false);
+            DerrotaMenu();
 
         }
         if(Global.vidas == 1)
@@ -63,7 +63,17 @@ public class GameManager : MonoBehaviour
         {
             hearts[2].SetActive(false);
 
-        }        
+        }
+        if (Global.vidas == 3)
+        {
+            hearts[3].SetActive(false);
+
+        }
+        if (Global.vidas == 4)
+        {
+            hearts[4].SetActive(false);
+
+        }
     }
 
     public void EstellaRecogida()
@@ -76,9 +86,7 @@ public class GameManager : MonoBehaviour
         if(Global.puntos == 13)
         {
             Debug.Log("vamos");
-            HUD.SetActive(false);
-            pantallaVictoria.SetActive(true);
-            Jugador.SetActive(false);
+            VictoriaMenu();
 
         }
         
@@ -100,9 +108,53 @@ public class GameManager : MonoBehaviour
             hearts[2].SetActive(true);
 
         }
+        if (Global.vidas > 3)
+        {
+            hearts[3].SetActive(true);
+
+        }
+        if (Global.vidas > 4)
+        {
+            hearts[4].SetActive(true);
+
+        }
     }
 
+    public void DerrotaMenu()
+    {
+        hearts[0].SetActive(false);
+        HUD.SetActive(false);
+        pantallaFinal.SetActive(true);
+        personajeDerrota.SetActive(true);
+        Jugador.SetActive(false);
+    }
+    
+    public void VictoriaMenu()
+    {
+        HUD.SetActive(false);
+        pantallaFinal.SetActive(true);
+        personajeVictoria.SetActive(true);
+        Jugador.SetActive(false);
 
+    }
 
+    public void Game()
+    {
+        SceneManager.LoadScene("Platforms");
+    }
 
+    public void Menu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void LoadLobby()
+    {
+        Invoke("Menu", 1f);
+    }
+    
+    public void LoadNivel()
+    {
+        Invoke("Game", 1f);
+    }
 }
