@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+
     public GameObject[] hearts;
     public Text estrellaText;
 
@@ -16,7 +17,7 @@ public class GameManager : MonoBehaviour
     public GameObject personajeVictoria;
     public GameObject Jugador;
 
-
+    
 
     // Si ya hay una instancia que no soy yo me destruyo si hay mas de un game manager uno de ellos se mata
     void Awake()
@@ -32,11 +33,21 @@ public class GameManager : MonoBehaviour
                 Instance = this;
             }
         }
-
         DontDestroyOnLoad(this);
+        
+
+        
         
     }
 
+    private void Start() 
+    {
+        Scene scene;
+        scene = SceneManager.GetActiveScene();
+
+        var objects = scene.GetRootGameObjects();
+        Debug.Log(objects.Length.ToString());    
+    }
 
 
 
@@ -46,8 +57,6 @@ public class GameManager : MonoBehaviour
         Global.vidas--;
         AudioManager.Instance.GolpeSound();
         
-
-
         
         if(Global.vidas == 0)
         {
@@ -137,16 +146,40 @@ public class GameManager : MonoBehaviour
         personajeVictoria.SetActive(true);
         Jugador.SetActive(false);
 
+        
+
+        
     }
 
-    public void Game()
+    IEnumerator Game()
     {
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("Platforms");
+        
+        yield return new WaitForSeconds(2);
+
+        //HUD = GameObject.Find("Hud").GetComponent<GameObject>();
+        //pantallaFinal = GameObject.Find("Pantalla").GetComponent<GameObject>();
+        //personajeDerrota = GameObject.Find("PersonajeDerrota").GetComponent<GameObject>();
+        //personajeVictoria = GameObject.Find("PersonajeVictoria").GetComponent<GameObject>();
+        //Jugador = GameObject.Find("Platforms/knight").GetComponent<GameObject>();
+        //estrellaText = GameObject.Find("ContadorEstrellas").GetComponent<Text>();
+
+
+        HUD = scene.gameObject.Find("Hud").GetComponent<GameObject>();
+        /*GameObject[] objects = scene.GetRootGameObjects();
+        Debug.Log(objects.Length.ToString());
+        foreach (GameObject item in objects)
+        {
+            Debug.Log(item.gameObject.name);
+        }*/
+
     }
 
     public void Menu()
     {
         SceneManager.LoadScene("MainMenu");
+        
     }
 
     public void LoadLobby()
@@ -156,6 +189,6 @@ public class GameManager : MonoBehaviour
     
     public void LoadNivel()
     {
-        Invoke("Game", 1f);
+        StartCoroutine(Game());
     }
 }
