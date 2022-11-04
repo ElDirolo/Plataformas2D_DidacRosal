@@ -40,17 +40,6 @@ public class GameManager : MonoBehaviour
         
     }
 
-    private void Start() 
-    {
-        Scene scene;
-        scene = SceneManager.GetActiveScene();
-
-        var objects = scene.GetRootGameObjects();
-        Debug.Log(objects.Length.ToString());    
-    }
-
-
-
 
     public void Golpe()
     {
@@ -93,11 +82,10 @@ public class GameManager : MonoBehaviour
         Global.puntos++;
         estrellaText.text = "" + Global.puntos; 
             
-        if(Global.puntos == 1)
+        if(Global.puntos == 13)
         {
             Debug.Log("vamos");
             VictoriaMenu();
-
         }
         
     }
@@ -137,6 +125,7 @@ public class GameManager : MonoBehaviour
         pantallaFinal.SetActive(true);
         personajeDerrota.SetActive(true);
         Jugador.SetActive(false);
+        AudioManager.Instance.DerrotaSound();
     }
     
     public void VictoriaMenu()
@@ -145,50 +134,6 @@ public class GameManager : MonoBehaviour
         pantallaFinal.SetActive(true);
         personajeVictoria.SetActive(true);
         Jugador.SetActive(false);
-
-        
-
-        
-    }
-
-    IEnumerator Game()
-    {
-        yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene("Platforms");
-        
-        yield return new WaitForSeconds(2);
-
-        //HUD = GameObject.Find("Hud").GetComponent<GameObject>();
-        //pantallaFinal = GameObject.Find("Pantalla").GetComponent<GameObject>();
-        //personajeDerrota = GameObject.Find("PersonajeDerrota").GetComponent<GameObject>();
-        //personajeVictoria = GameObject.Find("PersonajeVictoria").GetComponent<GameObject>();
-        //Jugador = GameObject.Find("Platforms/knight").GetComponent<GameObject>();
-        //estrellaText = GameObject.Find("ContadorEstrellas").GetComponent<Text>();
-
-
-        HUD = scene.gameObject.Find("Hud").GetComponent<GameObject>();
-        /*GameObject[] objects = scene.GetRootGameObjects();
-        Debug.Log(objects.Length.ToString());
-        foreach (GameObject item in objects)
-        {
-            Debug.Log(item.gameObject.name);
-        }*/
-
-    }
-
-    public void Menu()
-    {
-        SceneManager.LoadScene("MainMenu");
-        
-    }
-
-    public void LoadLobby()
-    {
-        Invoke("Menu", 1f);
-    }
-    
-    public void LoadNivel()
-    {
-        StartCoroutine(Game());
+        AudioManager.Instance.VictoriaSound();
     }
 }

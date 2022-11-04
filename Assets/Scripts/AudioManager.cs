@@ -13,8 +13,12 @@ public class AudioManager : MonoBehaviour
     public AudioClip Recolectado;
 
     public AudioClip VidaExtra;
-    
-    
+
+    public AudioClip Derrota;
+
+    public AudioClip Victoria;
+
+
     void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
@@ -45,5 +49,15 @@ public class AudioManager : MonoBehaviour
     public void VidaSound()
     {
         _audioSource.PlayOneShot(VidaExtra);
+    }
+
+    public void VictoriaSound()
+    {
+        _audioSource.PlayOneShot(Victoria);
+    }
+
+    public void DerrotaSound()
+    {
+        _audioSource.PlayOneShot(Derrota);
     }
 }
