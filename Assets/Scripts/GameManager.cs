@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     {
         if(Instance != null && Instance != this)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
 
         else
@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(this);
+        
     }
 
 
@@ -83,7 +84,7 @@ public class GameManager : MonoBehaviour
         Global.puntos++;
         estrellaText.text = "" + Global.puntos; 
             
-        if(Global.puntos == 13)
+        if(Global.puntos == 1)
         {
             Debug.Log("vamos");
             VictoriaMenu();
