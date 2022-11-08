@@ -8,7 +8,7 @@ public class GroundCheck : MonoBehaviour
 
     void Awake()
     {  
-        player = GameObject.Find("knight").GetComponent<PlayerMove>();
+        player = GameObject.Find("Jugador").GetComponent<PlayerMove>();
     }
     void OnTriggerStay2D(Collider2D col)
     {
