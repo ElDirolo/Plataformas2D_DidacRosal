@@ -113,6 +113,13 @@ public class PlayerMove : MonoBehaviour
         {
 
             Debug.Log("UY PAPI UWU");
+            StartCoroutine(GameObject.Find("Main Camera").GetComponent<CameraShake>().Shake(1f, 0.05f));
+                    
+            GameManager.Instance.Golpe();
+            
+            bombaScript = other.gameObject.GetComponent<Bombas>();
+            
+            bombaScript.DeathBoom();
 
         }
 
