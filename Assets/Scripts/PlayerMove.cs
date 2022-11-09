@@ -77,7 +77,16 @@ public class PlayerMove : MonoBehaviour
         {
             director.Play();
         }
-        
+
+
+        if(other.gameObject.layer ==3)
+        {
+            Debug.Log("OLEEEE");
+            Destroy(other.gameObject);
+            GameManager.Instance.CorazonRecogido();
+        }   
+
+
         if(other.gameObject.layer == 6)
         {
             Debug.Log("BUMMM");
@@ -90,6 +99,7 @@ public class PlayerMove : MonoBehaviour
             //anim.SetBool("Explosion", true);
         }
 
+
         if(other.gameObject.layer == 7)
         {
             Debug.Log("STARRR");
@@ -98,12 +108,16 @@ public class PlayerMove : MonoBehaviour
 
         }
 
-        if(other.gameObject.layer ==3)
+
+        if(other.gameObject.layer == 8)
         {
-            Debug.Log("OLEEEE");
-            Destroy(other.gameObject);
-            GameManager.Instance.CorazonRecogido();
+
+            Debug.Log("UY PAPI UWU");
+
         }
+
+
+
         
     }
 
