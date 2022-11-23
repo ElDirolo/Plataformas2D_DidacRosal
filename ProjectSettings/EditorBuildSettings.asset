@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Platforms 2.unity
     guid: 85a06877158f4a24c870f49df9038e5e
+  - enabled: 1
+    path: Assets/Examen/_practica_end.unity
+    guid: 20fb6cfae0b132544b7b5a2a966a0847
+  - enabled: 1
+    path: Assets/Examen/practica_examen.unity
+    guid: 50567d154b077b046948a821a8a52a30
   m_configObjects: {}
