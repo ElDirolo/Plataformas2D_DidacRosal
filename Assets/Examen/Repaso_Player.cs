@@ -86,6 +86,22 @@ public class Repaso_Player : MonoBehaviour
         }
     }
 
+    //para detectar las estrella
+    void OnTriggerEnter2D(Collider2D other)
+    {
+
+        //lo del loadScene el numero indica cual escena queremos que active en este caso el 4
+        if(other.gameObject.tag == "Star")
+        {
+            ReGameManager.Instance.LoadLevel(4);
+        }
+
+        else if(other.gameObject.tag == "Coin")
+        {
+            ReGameManager.Instance.AddCoin(other.gameObject);
+        }
+    }
+
 
 
 }
