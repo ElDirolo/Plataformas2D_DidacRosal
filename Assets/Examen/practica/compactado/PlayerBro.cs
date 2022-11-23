@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerBro : MonoBehaviour
 {
+    #region player
     private Rigidbody2D rBody;
 
     private float horizontal;
@@ -91,4 +92,5 @@ public class PlayerBro : MonoBehaviour
             ManagerBro.Instance.AddCoin(other.gameObject);
         }
     }
+    #endregion
 }
